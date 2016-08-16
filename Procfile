@@ -1,1 +1,1 @@
-web: java -jar target/deploytest.jar $PORT
+web: java -jar target/deploy.jar $PORT

@@ -27,8 +27,13 @@ public class HealthProfileService implements HealthProfileServiceInterface {
 			logger.info("Creating " + p.toString());
 		}
 		else {
-			person_id = Dao.getDao().savePerson(p, true);
-			logger.info("Updating " + p.toString());
+			Person existing = Dao.getDao().getPersonById(p.getId());
+			existing.setSex(p.getSex());
+			existing.setFirstname(p.getFirstname());
+			existing.setLastname(p.getLastname());
+			existing.setBirthdate(p.getBirthdate());
+			person_id = Dao.getDao().savePerson(existing, true);
+			logger.info("Updating " + existing.toString());
 		}
 		
 		return person_id;	
